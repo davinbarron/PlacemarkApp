@@ -12,7 +12,7 @@ class PlacemarkActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlacemarkBinding
     var placemark = PlacemarkModel()
-    var app : MainApp? = null
+    lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,12 +27,12 @@ class PlacemarkActivity : AppCompatActivity() {
             placemark.title = binding.placemarkTitle.text.toString()
             placemark.description = binding.placemarkDescription.text.toString()
             if (placemark.title.isNotEmpty() && placemark.description.isNotEmpty()) {
-                app!!.placemarks.add(placemark.copy())
+                app.placemarks.add(placemark.copy())
                 i("add Button Pressed: Title='${placemark.title}', Description='${placemark.description}'")
 
                 // Log all placemarks
-                for (i in app!!.placemarks.indices) {
-                    i("Placemark[$i]:${this.app!!.placemarks[i]}")
+                for (i in app.placemarks.indices) {
+                    i("Placemark[$i]:${this.app.placemarks[i]}")
                 }
             }
             else {
