@@ -32,8 +32,8 @@ class PlacemarkActivity : AppCompatActivity() {
                 i("add Button Pressed: Title='${placemark.title}', Description='${placemark.description}'")
 
                 // Log all placemarks
-                for (p in placemarks) {
-                    i("Placemark: Title='${p.title}', Description='${p.description}'")
+                for (i in placemarks.indices) {
+                    i("Placemark[$i]:${this.placemarks[i]}")
                 }
             }
             else {
