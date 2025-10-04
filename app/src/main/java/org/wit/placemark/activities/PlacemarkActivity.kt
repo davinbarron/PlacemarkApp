@@ -20,8 +20,6 @@ class PlacemarkActivity : AppCompatActivity() {
         binding = ActivityPlacemarkBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Timber.plant(Timber.DebugTree())
-
         i("Placemark Activity started...")
 
         binding.btnAdd.setOnClickListener() {
