@@ -35,13 +35,8 @@ class PlacemarkActivity : AppCompatActivity() {
             placemark.title = binding.placemarkTitle.text.toString()
             placemark.description = binding.placemarkDescription.text.toString()
             if (placemark.title.isNotEmpty() && placemark.description.isNotEmpty()) {
-                app.placemarks.add(placemark.copy())
+                app.placemarks.create(placemark.copy())
                 i("add Button Pressed: Title='${placemark.title}', Description='${placemark.description}'")
-
-                // Log all placemarks
-                for (i in app.placemarks.indices) {
-                    i("Placemark[$i]:${this.app.placemarks[i]}")
-                }
 
                 setResult(RESULT_OK)
                 finish()
