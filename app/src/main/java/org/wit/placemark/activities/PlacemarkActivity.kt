@@ -31,6 +31,15 @@ class PlacemarkActivity : AppCompatActivity() {
         app = application as MainApp
         i("Placemark Activity started...")
 
+        if (intent.hasExtra("placemark_edit")) {
+            placemark = intent.extras?.getParcelable("placemark_edit")!!
+            binding.placemarkTitle.setText(placemark.title)
+            binding.placemarkDescription.setText(placemark.description)
+            binding.btnAdd.text = getString(R.string.button_savePlacemark)
+        } else {
+            binding.btnAdd.text = getString(R.string.button_addPlacemark)
+        }
+
         binding.btnAdd.setOnClickListener() {
             placemark.title = binding.placemarkTitle.text.toString()
             placemark.description = binding.placemarkDescription.text.toString()
@@ -43,7 +52,7 @@ class PlacemarkActivity : AppCompatActivity() {
             }
             else {
                 Snackbar
-                    .make(it,"Please Enter a title", Snackbar.LENGTH_LONG)
+                    .make(it,getString(R.string.enter_title_prompt), Snackbar.LENGTH_LONG)
                     .show()
             }
         }
