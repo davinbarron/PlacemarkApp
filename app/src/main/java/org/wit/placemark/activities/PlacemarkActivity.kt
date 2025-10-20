@@ -44,7 +44,11 @@ class PlacemarkActivity : AppCompatActivity() {
             placemark.title = binding.placemarkTitle.text.toString()
             placemark.description = binding.placemarkDescription.text.toString()
             if (placemark.title.isNotEmpty() && placemark.description.isNotEmpty()) {
-                app.placemarks.create(placemark.copy())
+                if (intent.hasExtra("placemark_edit")) {
+                    app.placemarks.update(placemark.copy())
+                } else {
+                    app.placemarks.create(placemark.copy())
+                }
                 i("add Button Pressed: Title='${placemark.title}', Description='${placemark.description}'")
 
                 setResult(RESULT_OK)
